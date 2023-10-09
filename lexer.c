@@ -12,12 +12,12 @@ const char* keywords[] = {"accessor", "and", "array", "begin", "bool", "case", "
 
 bool containsDoubleOperator(char word[])
 {
-    int size = strlen(word);
-    int operatorSize = sizeof(double_operators)/sizeof(double_operators[0]);
+    //int size = strlen(word);
+    int operatorSize = sizeof(doubleOperators)/sizeof(doubleOperators[0]);
     
     for(int i = 0; i < operatorSize; i++)
     {
-        if(strstr(word, double_operators[i]))
+        if(strstr(word, doubleOperators[i]))
         {
             return true;
         }
@@ -59,7 +59,7 @@ void parseWord(char word[])
 bool isOperator(char word[])
 {
     //total number of characters in word[]
-    int size = strlen(word);
+    //int size = strlen(word);
     int operatorSize = sizeof(operators)/sizeof(operators[0]);
     
     for(int j = 0; j < operatorSize; j++)
@@ -79,12 +79,12 @@ bool isOperator(char word[])
 bool isDoubleOperator(char word[])
 {
     //total number of characters in word[]
-    int size = strlen(word);
-    int operatorSize = sizeof(double_operators)/sizeof(double_operators[0]);
+    //int size = strlen(word);
+    int operatorSize = sizeof(doubleOperators)/sizeof(doubleOperators[0]);
     
     for(int i = 0; i < operatorSize; i++)
     {
-        if(strstr(word, double_operators[i]))
+        if(strstr(word, doubleOperators[i]))
         {
             return true;
         }
@@ -98,7 +98,7 @@ int getOperatorIndex(char word[])
     //total number of characters in word[]
     int size = strlen(word);
     size_t sizeOperators = sizeof(operators)/sizeof(operators[0]);;
-    size_t sizeDoubleOperators = sizeof(double_operators)/sizeof(double_operators[0]);
+    size_t sizeDoubleOperators = sizeof(doubleOperators)/sizeof(doubleOperators[0]);
 
     for(int j = 0; j < size; j++)
     {
@@ -109,7 +109,7 @@ int getOperatorIndex(char word[])
             temp[1] = word[j + 1];
             for(int k = 0; k < sizeDoubleOperators; k++)
             {
-                if(strcmp(temp, double_operators[k]) == 0)
+                if(strcmp(temp, doubleOperators[k]) == 0)
                 {
                     return j + 2;
                 }

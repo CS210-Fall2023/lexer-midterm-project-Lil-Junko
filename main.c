@@ -2,7 +2,7 @@
 *@file main.c
 *@brief This is the main file for the lexer
 *@details This file will take in a file and parse it into a new file with the .lexer extension
-*@date 10/9/2023
+*@date 2021-10-13
 *@name Nolan Meyer
 */
 #include <stdio.h>
@@ -11,6 +11,7 @@
 #include <string.h>
 #include <ctype.h>
 #include "lexer.h"
+
 
 int main()
 {
@@ -28,7 +29,6 @@ int main()
     }
     // add ".lexer" to end of the file_name
     strcat(file_name, ".lexer");
-    printf("%s", file_name);
     // Open another file for writing
     fptr2 = fopen(file_name, "w");
     
@@ -179,7 +179,6 @@ int main()
             data[i]='\0';
         }
 
-        printf("%s\n", data);
         fscanf(fptr1, "%s", data);
            
     }while ((c != EOF));
