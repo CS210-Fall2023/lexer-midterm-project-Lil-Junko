@@ -2,7 +2,7 @@
 *@file main.c
 *@brief This is the main file for the lexer
 *@details This file will take in a file and parse it into a new file with the .lexer extension
-*@date 2021-10-13
+*@date 10/9/2023
 *@name Nolan Meyer
 */
 #include <stdio.h>
@@ -10,7 +10,7 @@
 #include <stdbool.h>
 #include <string.h>
 #include <ctype.h>
-#include "lexer.c"
+#include "lexer.h"
 
 int main()
 {
@@ -20,7 +20,7 @@ int main()
     printf("please write the input file: ");
     scanf("%s", file_name);
     // Open one file for reading
-    fptr1 = fopen(file_name, "r");         //IMPORTANT CHANGE LATER
+    fptr1 = fopen(file_name, "r");
     if (fptr1 == NULL)
     {
         printf("Cannot open file\n");
