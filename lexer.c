@@ -1,5 +1,15 @@
 #include "lexer.h"
 
+//list of operators
+const char operators[] = {'<', '>', '(', ')', '+', '-', '*', '/', '|', '&', ';', ',', ':', '[', ']', '=', '!'};
+const char* doubleOperators [] = {":=", "..", "<<", ">>", "<>", "<=", ">=", "**", "!=","=>" };
+// accessor and array begin bool case character constant else elsif end exit function
+// if in integer interface is loop module mutator natural null of or other out
+// positive procedure range return struct subtype then type when while
+const char* keywords[] = {"accessor", "and", "array", "begin", "bool", "case", "character", "constant", "else", "elsif", "end", "exit", "function",
+                    "if", "in", "integer", "interface", "is", "loop", "module", "mutator", "natural", "null", "of", "or", "other", "out", "positive",
+                    "procedure", "range", "return", "struct", "subtype", "then", "type", "when", "while"};
+
 bool containsDoubleOperator(char word[])
 {
     int size = strlen(word);
