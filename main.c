@@ -2,8 +2,7 @@
 *@file main.c
 *@brief This is the main file for the lexer
 *@details This file will take in a file and parse it into a new file with the .lexer extension
-*@date 2021-10-13
-*@name Nolan Meyer
+*@date does it even matter anymore?
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,24 +12,26 @@
 #include "lexer.h"
 
 
-int main()
+int main(int argc, char *argv[])
 {
+    if(argc != 2)
+    {
+        printf("Error: Incorrect number of arguments\nExample: lexer test.txt\n");
+        exit(0);
+    }
     int back;
     char c;
-    char file_name[100];
-    printf("please write the input file: ");
-    scanf("%s", file_name);
     // Open one file for reading
-    fptr1 = fopen(file_name, "r");
+    fptr1 = fopen(argv[1], "r");
     if (fptr1 == NULL)
     {
         printf("Cannot open file\n");
         exit(0);
     }
     // add ".lexer" to end of the file_name
-    strcat(file_name, ".lexer");
+    strcat(argv[1], ".lexer");
     // Open another file for writing
-    fptr2 = fopen(file_name, "w");
+    fptr2 = fopen(argv[1], "w");
     
     //get data
     char data[100] = {'\0'};
@@ -57,7 +58,7 @@ int main()
             {
                 back = (strlen(data));
                 //move back to the beggining of the word
-                fseek(fptr1, -back, SEEK_CUR);
+                fseek(fptr1, -back, SEEK_CUR); //go back to start of "string"
                 //print the first "
                 c = '"'; //force the first " to print
                 fprintf(fptr2, "%c", c);
@@ -66,6 +67,7 @@ int main()
                 //if it is, then print the data until the next "
                 while(c != '"')
                 {
+                    printf("test1");
                     c = fgetc(fptr1);
                     fprintf(fptr2, "%c", c);            
                 }
@@ -79,20 +81,20 @@ int main()
                 fprintf(fptr2, "%s", data);
                 fprintf(fptr2, "%c", c);
                 //if it is a comment, then print the word until the next */
-                for(bool end = false; end == false;)
+                for(bool end = false; end == false;) //while the comment has not ended
                 {
-                    c = fgetc(fptr1);
+                    c = fgetc(fptr1); //get the next character
                     fprintf(fptr2, "%c", c);
                     if(c == '*')
                     {
                         c = fgetc(fptr1);
-                        if(c == '/')
+                        if(c == '/') //if the next character is a /, then end the comment
                         {
                             end = true;
                         }
                     }
                 }
-                fprintf(fptr2, "%c", c);
+                fprintf(fptr2, "%c", c); //print the last /
                 fprintf(fptr2, " (comment)\n");
             }
             else //everything else
@@ -179,6 +181,7 @@ int main()
             data[i]='\0';
         }
 
+        //printf("%s\n", data);
         fscanf(fptr1, "%s", data);
            
     }while ((c != EOF));
