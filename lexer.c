@@ -19,7 +19,6 @@ const char* keywords[] = {"accessor", "and", "array", "begin", "bool", "case", "
 */
 bool containsDoubleOperator(char word[])
 {
-    int size = strlen(word);
     int operatorSize = sizeof(doubleOperators)/sizeof(doubleOperators[0]); //total number of operators
     
     for(int i = 0; i < operatorSize; i++) //check through all operators
@@ -73,7 +72,6 @@ void parseWord(char word[])
 bool isOperator(char word[])
 {
     //total number of characters in word[]
-    int size = strlen(word);
     int operatorSize = sizeof(operators)/sizeof(operators[0]);
     
     for(int j = 0; j < operatorSize; j++)
@@ -97,7 +95,6 @@ bool isOperator(char word[])
 bool isDoubleOperator(char word[])
 {
     //total number of characters in word[]
-    int size = strlen(word); //total number of characters in word[]
     int operatorSize = sizeof(doubleOperators)/sizeof(doubleOperators[0]); //total number of operators
     
     for(int i = 0; i < operatorSize; i++)

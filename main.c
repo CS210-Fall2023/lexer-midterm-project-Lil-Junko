@@ -67,7 +67,6 @@ int main(int argc, char *argv[])
                 //if it is, then print the data until the next "
                 while(c != '"')
                 {
-                    printf("test1");
                     c = fgetc(fptr1);
                     fprintf(fptr2, "%c", c);            
                 }
